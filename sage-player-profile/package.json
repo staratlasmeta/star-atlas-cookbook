@@ -1,0 +1,18 @@
+{
+  "name": "sage-player-profile",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "author": "Xcode <xcode@staratlas.com>, Kelvin <kelvin@staratlas.com>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "@project-serum/anchor": "^0.26.0",
+    "@solana/spl-token": "^0.3.11",
+    "@solana/web3.js": "^1.89.0",
+    "@staratlas/data-source": "^0.6.7",
+    "@staratlas/player-profile": "^0.8.7",
+    "@staratlas/sage": "^0.9.7",
+    "typescript": "^5.3.3"
+  }
+}
