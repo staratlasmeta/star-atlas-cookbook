@@ -1,13 +1,9 @@
-<a name="readme-top"></a>
+## Sage Player Profile Recipe
 
+This example bootstraps your Solana / Star Atlas environment using Bun.sh.
 
-<div align="center">
-<h3 align="center">Sage Player Profile Recipe</h3>
-  <p align="center">
-    This example bootstraps your Solana / Star Atlas environment using Bun.sh.
-    Running the app prints your Solana Wallet and Sage Player Profile address. 
-  </p>
-</div>
+Running the app prints your wallet Public Key and Sage Player Profile address. 
+
 
 ### Install Solana
 https://docs.solanalabs.com/cli/install
