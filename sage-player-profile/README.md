@@ -2,9 +2,10 @@
 
 
 <div align="center">
-<h3 align="center">Sage Player Profile</h3>
+<h3 align="center">Sage Player Profile Recipe</h3>
   <p align="center">
-    This example bootstraps your environment and prints your Solana Wallet address and Sage Player Profile address. 
+    This example bootstraps your Solana / Star Atlas environment using Bun.sh.
+    Running the app prints your Solana Wallet and Sage Player Profile address. 
   </p>
 </div>
 
@@ -21,7 +22,7 @@ https://bun.sh/
 ### Get a free RPC account with Helius
 https://www.helius.dev/
 
-### Edit index.ts 
+### Edit index.ts, update your wallet id.json file and install your RPC key
 - `nano index.ts`
 - update `'const wallet = "/home/user/.config/solana/id.json"`
 - update `const RPC_ENDPOINT = "https://mainnet.helius-rpc.com/?api-key="`
