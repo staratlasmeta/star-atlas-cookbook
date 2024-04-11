@@ -5,16 +5,13 @@ import { PLAYER_PROFILE_IDL, PlayerProfile } from "@staratlas/player-profile";
 import { Fleet, SAGE_IDL } from "@staratlas/sage";
 import fs from "fs";
 
-// Configure wallet and RPC
+// Configure wallet and RPC's before starting
 const wallet = "/home/user/.config/solana/id.json"
 const RPC_ENDPOINT = "https://mainnet.helius-rpc.com/?api-key="
 const RPC_WEBSOCKET = "wss://rpc.helius.xyz/?api-key="
 const confirmTransactionInitialTimeout = 60000
-// SAGE Starbased ID's
 const PLAYER_PROFILE_PROGRAM_ID = "pprofELXjL5Kck7Jn5hCpwAL82DpTkSYBENzahVtbc9"
-const SAGE_PROGRAM_ID = "GAMEzqJehF8yAnKiTARUuhZMvLvkZVAsCVri5vSfemLr"
-// const SAGE_CRAFTING_ID = "CRAFT2RPXPJWCEix4WpJST3E7NLf79GTqZUL75wngXo5"
-// const SAGE_CARGO_ID = "Cargo2VNTPPTi9c1vq1Jw5d3BWUNr18MjRtSupAghKEk"
+const SAGE_PROGRAM_ID = "SAGE2HAwep459SNq61LHvjxPk4pLPEJLoMETef7f7EE"
 
 
 /**
@@ -115,7 +112,7 @@ const mainFunction = async() => {
         }
         
     }
-    // Print the Player Profile key
+    // Print Player Profile keys
     console.log("SAGE Player Profile: " + myProfiles.map((it)=>it.key.toBase58()))
 }
 
