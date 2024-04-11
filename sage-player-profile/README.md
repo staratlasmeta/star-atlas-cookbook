@@ -1,18 +1,10 @@
 <a name="readme-top"></a>
 
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
 
 <div align="center">
-<h3 align="center">SA Workshop</h3>
+<h3 align="center">Sage Player Profile</h3>
   <p align="center">
-    A light tool for demonstrating connectivity between Solana and Star Atlas with TypeScript. 
-    <br />
-    
-    <br />
+    This example bootstraps your environment and prints your Solana Wallet address and Sage Player Profile address. 
   </p>
 </div>
 

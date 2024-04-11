@@ -1,18 +1,9 @@
 <a name="readme-top"></a>
 
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-
 <div align="center">
 <h3 align="center">Star Atlas Cookbook</h3>
   <p align="center">
-    A light tool for demonstrating connectivity between Solana and Star Atlas with TypeScript. 
-    <br />
-    
-    <br />
+    A collection of code examples for demonstrating connectivity between Solana and Star Atlas with TypeScript. 
   </p>
 </div>
 
