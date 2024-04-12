@@ -9,7 +9,7 @@ import { loadKeypair } from "../../shared/wallet-setup";
 
 const SAGE_PROGRAM_ID = "SAGE2HAwep459SNq61LHvjxPk4pLPEJLoMETef7f7EE"
 
-const mainFunction = async (connection: Connection, myWallet: Keypair) => {
+const main = async (connection: Connection, myWallet: Keypair) => {
     console.log("Example 01: Sage Game");
 
     const provider = newAnchorProvider(connection, myWallet);
@@ -28,7 +28,7 @@ const mainFunction = async (connection: Connection, myWallet: Keypair) => {
     );
 
     if (games.length === 0) {
-        throw 'no game found';
+        throw Error('no game found');
     }
 
     const [game] = games;
@@ -44,4 +44,4 @@ const rpcWebsocket = process.env.RPC_WEBSOCKET || "wss://rpc.helius.xyz/?api-key
 
 const myWallet = loadKeypair(wallet);
 const connection = newConnection(rpcEndpoint, rpcWebsocket);
-mainFunction(connection, myWallet);
+main(connection, myWallet);

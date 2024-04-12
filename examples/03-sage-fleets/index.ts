@@ -9,7 +9,7 @@ import { loadKeypair } from "../../shared/wallet-setup";
 
 const SAGE_PROGRAM_ID = "SAGE2HAwep459SNq61LHvjxPk4pLPEJLoMETef7f7EE"
 
-const mainFunction = async (connection: Connection, myWallet: Keypair) => {
+const main = async (connection: Connection, myWallet: Keypair) => {
     console.log('Example 03: Sage Fleet');
 
     const provider = newAnchorProvider(connection, myWallet);
@@ -36,7 +36,7 @@ const mainFunction = async (connection: Connection, myWallet: Keypair) => {
     );
 
     if (fleets.length === 0) {
-        throw 'no fleet found';
+        throw Error('no fleet found');
     }
 
     for (const fleet of fleets) {
@@ -57,4 +57,4 @@ const rpcWebsocket = process.env.RPC_WEBSOCKET || "wss://rpc.helius.xyz/?api-key
 
 const myWallet = loadKeypair(wallet);
 const connection = newConnection(rpcEndpoint, rpcWebsocket);
-mainFunction(connection, myWallet);
+main(connection, myWallet);

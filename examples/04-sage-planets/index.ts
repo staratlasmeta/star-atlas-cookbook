@@ -12,7 +12,7 @@ import { Table } from 'console-table-printer';
 
 const SAGE_PROGRAM_ID = 'SAGE2HAwep459SNq61LHvjxPk4pLPEJLoMETef7f7EE';
 
-const mainFunction = async (connection: Connection, myWallet: Keypair) => {
+const main = async (connection: Connection, myWallet: Keypair) => {
     const args = process.argv.slice(2);
     const x = args[0] || '0';
     const y = args[1] || '0';
@@ -66,7 +66,7 @@ const mainFunction = async (connection: Connection, myWallet: Keypair) => {
     );
 
     if (planets.length === 0) {
-        throw 'no planet found';
+        throw Error('no planet found');
     }
 
     const planetsTable = new Table({
@@ -174,4 +174,4 @@ const rpcWebsocket = process.env.RPC_WEBSOCKET || 'wss://rpc.helius.xyz/?api-key
 
 const myWallet = generateKeypair(); // since this example does not require signing transactions, we can use a new random wallet
 const connection = newConnection(rpcEndpoint, rpcWebsocket);
-mainFunction(connection, myWallet);
+main(connection, myWallet);

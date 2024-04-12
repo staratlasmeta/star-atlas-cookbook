@@ -9,7 +9,7 @@ import { loadKeypair } from "../../shared/wallet-setup";
 
 const PLAYER_PROFILE_PROGRAM_ID = "pprofELXjL5Kck7Jn5hCpwAL82DpTkSYBENzahVtbc9"
 
-const mainFunction = async (connection: Connection, myWallet: Keypair) => {
+const main = async (connection: Connection, myWallet: Keypair) => {
     console.log("Example 02: Sage Player Profile");
 
     const provider = newAnchorProvider(connection, myWallet);
@@ -54,4 +54,4 @@ const rpcWebsocket = process.env.RPC_WEBSOCKET || "wss://rpc.helius.xyz/?api-key
 
 const myWallet = loadKeypair(wallet);
 const connection = newConnection(rpcEndpoint, rpcWebsocket);
-mainFunction(connection, myWallet);
+main(connection, myWallet);
