@@ -31,12 +31,12 @@ https://www.helius.dev/
 Alternatively, set environment variables in `.env` file:
 
 ```
-cp .env.sample path/to/example/.env
+cp .env.sample examples/.env
 # update .env file with your configuration
 ```
 
 ### Run the example
 
-- `cd path/to/example`
+- `cd examples`
 - `bun install`
-- `bun run index.ts`
+- `bun run path/to/example/index.ts`
