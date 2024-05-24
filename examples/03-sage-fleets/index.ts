@@ -45,12 +45,14 @@ const main = async (connection: Connection, myWallet: Keypair) => {
         const fleetLabel = data.fleetLabel;
 
         console.log(`Fleet Callsign: ${byteArrayToString(fleetLabel)}`);
+        console.log(`Fleet Pubkey: ${fleet.key.toBase58()}`)
         console.log(JSON.stringify(data, null, 2));
     }
 };
 
-// cd examples/03-sage-fleet
-// bun run index.ts
+// cd examples
+// bun run 03-sage-fleet/index.ts
+
 const wallet = process.env.WALLET_PATH || "/home/user/.config/solana/id.json"
 const rpcEndpoint = process.env.RPC_ENDPOINT || "https://mainnet.helius-rpc.com/?api-key=";
 const rpcWebsocket = process.env.RPC_WEBSOCKET || "wss://rpc.helius.xyz/?api-key=";
