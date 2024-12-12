@@ -1,0 +1,16 @@
+{
+  "name": "staratlas-galactic-marketplace-examples",
+  "module": "index.ts",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@project-serum/anchor": "^0.26.0",
+    "@staratlas/galactic-marketplace": "^0.12.3",
+    "console-table-printer": "^2.12.1"
+  }
+}
