@@ -97,9 +97,6 @@ const main = async (connection: Connection, myWallet: Keypair) => {
     );
     const [starbasePubkey] = Starbase.findAddress(sageProgram as any, gamePubkey, planet.data.sector as any);
 
-    // const state = JSON.stringify(fleet.state, null, 2);
-    // console.log(`Fleet State: ${state}`);
-
     if (fleet.state.Idle) {
         // ---------------------
         // Start Mining Asteroid
@@ -132,6 +129,9 @@ const main = async (connection: Connection, myWallet: Keypair) => {
         let resp = await sendTransaction(tx, connection);
         console.log(resp);
     } else if (fleet.state.MineAsteroid) {
+        // NOTE: Stop mining requires are two separate instructions, which have to be called in two subsequent transactions.
+        // Execution of the second call must not be a delay of more than 300 seconds.
+        //
         // ---------------------
         // Asteroid Mining Handler
         // ---------------------
@@ -205,9 +205,8 @@ const main = async (connection: Connection, myWallet: Keypair) => {
         const pointsPilotXp = game.data.points.pilotXpCategory as any;
         const pilotXpCategoryPubkey = pointsPilotXp.category as PublicKey;
         const pilotXpModifierPubkey = pointsPilotXp.modifier as PublicKey;
-        const [pilotXpUserAccountPubkey] = UserPoints.findAddress(pointsProgram as any, pilotXpCategoryPubkey, playerPofilePubkey);
-
-        // https://solscan.io/tx/xMWgBMpiFHeUPw6hkw2k5be3LUuNWcH6UNBkyRbqpGUAe156NpNnScXw1oMmX9n191AzhP8AQsmyGdLuGHgCPJu
+        const [pilotXpUserAccountPubkey] = UserPoints.findAddress(pointsProgram as any, pilotXpCategoryPubkey, 
+                                                                  
         ix = Fleet.stopMiningAsteroid(
             sageProgram as any,
             cargoProgram as any,
