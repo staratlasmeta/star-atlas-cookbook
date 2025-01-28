@@ -15,7 +15,7 @@ const main = async (connection: Connection, myWallet: Keypair) => {
     const x = args[0] || '0';
     const y = args[1] || '0';
 
-    console.log('Example 05: Sage Port of Entry');
+    console.log('Example 05: Sage Ships available to compose this fleet');
 
     const provider = newAnchorProvider(connection, myWallet);
     const sageProgram = new Program(
