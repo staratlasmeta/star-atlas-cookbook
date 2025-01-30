@@ -4,15 +4,16 @@ import { Connection, Keypair, PublicKey } from "@solana/web3.js";
 import { byteArrayToString, readAllFromRPC } from "@staratlas/data-source";
 import { Fleet, SAGE_IDL } from "@staratlas/sage";
 
-import { newConnection, newAnchorProvider } from "../../shared/anchor-setup";
-import { loadKeypair } from "../../shared/wallet-setup";
+import { newAnchorProvider } from "../../shared/anchor-setup";
 
 const SAGE_PROGRAM_ID = "SAGE2HAwep459SNq61LHvjxPk4pLPEJLoMETef7f7EE"
 
-const main = async (connection: Connection, myWallet: Keypair) => {
+// cd examples
+// bun run runner 03-sage-fleets/index.ts
+export async function main(connection: Connection, wallet: Keypair) {
     console.log('Example 03: Sage Fleet');
 
-    const provider = newAnchorProvider(connection, myWallet);
+    const provider = newAnchorProvider(connection, wallet);
     const sageProgram = new Program(
         SAGE_IDL,
         SAGE_PROGRAM_ID,
@@ -47,14 +48,4 @@ const main = async (connection: Connection, myWallet: Keypair) => {
         console.log(`Fleet Callsign: ${byteArrayToString(fleetLabel)}`);
         console.log(JSON.stringify(data, null, 2));
     }
-};
-
-// cd examples/03-sage-fleet
-// bun run index.ts
-const wallet = process.env.WALLET_PATH || "/home/user/.config/solana/id.json"
-const rpcEndpoint = process.env.RPC_ENDPOINT || "https://mainnet.helius-rpc.com/?api-key=";
-const rpcWebsocket = process.env.RPC_WEBSOCKET || "wss://rpc.helius.xyz/?api-key=";
-
-const myWallet = loadKeypair(wallet);
-const connection = newConnection(rpcEndpoint, rpcWebsocket);
-main(connection, myWallet);
+}

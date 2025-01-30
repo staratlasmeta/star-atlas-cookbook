@@ -11,5 +11,5 @@ To run:
 ```bash
 cp ../.env.sample .env
 # update .env file with your configuration
-bun run path/to/example/index.ts
+bun run runner path/to/example/index.ts
 ```
