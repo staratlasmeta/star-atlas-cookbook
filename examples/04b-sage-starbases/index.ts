@@ -5,20 +5,22 @@ import bs58 from 'bs58';
 import { byteArrayToString, readAllFromRPC } from "@staratlas/data-source";
 import { Starbase, SAGE_IDL } from "@staratlas/sage";
 
-import { newConnection, newAnchorProvider } from '../../shared/anchor-setup';
-import { generateKeypair } from '../../shared/wallet-setup';
+import { newAnchorProvider } from '../../shared/anchor-setup';
 
 import { Table } from 'console-table-printer';
 
 const SAGE_PROGRAM_ID = 'SAGE2HAwep459SNq61LHvjxPk4pLPEJLoMETef7f7EE';
 
-const main = async (connection: Connection, myWallet: Keypair) => {
+// cd examples
+// # Mud (1) Oni (2) Ustur (3)
+// bun run runner 04b-sage-starbases/index.ts 1
+export async function main(connection: Connection, wallet: Keypair) {
     const args = process.argv.slice(2);
-    const faction = args[0] || '1'; // default to 'Mud' faction
+    const faction = args[1] || '1'; // default to 'Mud' faction
 
     console.log(`Example 04b: Sage Starbases`);
 
-    const provider = newAnchorProvider(connection, myWallet);
+    const provider = newAnchorProvider(connection, wallet);
     const sageProgram = new Program(
         SAGE_IDL,
         SAGE_PROGRAM_ID,
@@ -77,15 +79,4 @@ const main = async (connection: Connection, myWallet: Keypair) => {
 
     starbasesTable.addRows(starbasesRows);
     starbasesTable.printTable();
-};
-
-// cd examples
-// # Mud (1) Oni (2) Ustur (3)
-// bun run 04b-sage-starbases/index.ts 1
-
-const rpcEndpoint = process.env.RPC_ENDPOINT || 'https://mainnet.helius-rpc.com/?api-key=';
-const rpcWebsocket = process.env.RPC_WEBSOCKET || 'wss://rpc.helius.xyz/?api-key=';
-
-const myWallet = generateKeypair(); // since this example does not require signing transactions, we can use a new random wallet
-const connection = newConnection(rpcEndpoint, rpcWebsocket);
-main(connection, myWallet);
+}

@@ -5,19 +5,20 @@ import bs58 from 'bs58';
 import { byteArrayToString, readAllFromRPC, readFromRPCOrError } from "@staratlas/data-source";
 import { Ship, Starbase, StarbasePlayer, SAGE_IDL } from "@staratlas/sage";
 
-import { newConnection, newAnchorProvider } from "../../shared/anchor-setup";
-import { loadKeypair } from "../../shared/wallet-setup";
+import { newAnchorProvider } from "../../shared/anchor-setup";
 
 const SAGE_PROGRAM_ID = "SAGE2HAwep459SNq61LHvjxPk4pLPEJLoMETef7f7EE";
 
-const main = async (connection: Connection, myWallet: Keypair) => {
+// cd examples
+// bun run runner 05-sage-list-compose-fleet/index.ts 40 30
+export async function main(connection: Connection, wallet: Keypair) {
     const args = process.argv.slice(2);
-    const x = args[0] || '0';
-    const y = args[1] || '0';
+    const x = args[1] || '0';
+    const y = args[2] || '0';
 
     console.log('Example 05: Sage Ships available to compose this fleet');
 
-    const provider = newAnchorProvider(connection, myWallet);
+    const provider = newAnchorProvider(connection, wallet);
     const sageProgram = new Program(
         SAGE_IDL,
         SAGE_PROGRAM_ID,
@@ -130,13 +131,3 @@ const main = async (connection: Connection, myWallet: Keypair) => {
         console.log(`Ship: ${shipName} (${entry.amount}) Mint: ${shipData.mint.toBase58()}`); 5
     }
 }
-
-// cd examples
-// bun run 05-sage-list-compose-fleet/index.ts 40 30
-const wallet = process.env.WALLET_PATH || "/home/user/.config/solana/id.json"
-const rpcEndpoint = process.env.RPC_ENDPOINT || "https://mainnet.helius-rpc.com/?api-key=";
-const rpcWebsocket = process.env.RPC_WEBSOCKET || "wss://rpc.helius.xyz/?api-key=";
-
-const myWallet = loadKeypair(wallet);
-const connection = newConnection(rpcEndpoint, rpcWebsocket);
-main(connection, myWallet);
