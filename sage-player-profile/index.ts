@@ -137,8 +137,14 @@ const mainFunction = async() => {
         
         // Check fleet state based on cooldowns
         const now = Math.floor(Date.now() / 1000);
-        const warpCooldown = fleetData.warpCooldownExpiresAt === '00' ? 0 : parseInt(fleetData.warpCooldownExpiresAt, 16);
-        const scanCooldown = fleetData.scanCooldownExpiresAt === '00' ? 0 : parseInt(fleetData.scanCooldownExpiresAt, 16);
+        console.log('Current time:', new Date(now * 1000).toLocaleString());
+        
+        // Parse BN values correctly
+        const warpCooldown = fleetData.warpCooldownExpiresAt.toNumber();
+        const scanCooldown = fleetData.scanCooldownExpiresAt.toNumber();
+        
+        console.log('Warp cooldown expires at:', new Date(warpCooldown * 1000).toLocaleString());
+        console.log('Scan cooldown expires at:', new Date(scanCooldown * 1000).toLocaleString());
         
         const isWarping = warpCooldown > 0 && warpCooldown > now;
         const isScanning = scanCooldown > 0 && scanCooldown > now;
@@ -150,24 +156,26 @@ const mainFunction = async() => {
         console.log('State:', state);
         
         // Display cooldown information
-        if (isWarping && warpCooldown > now) {
-            const remainingTime = Math.max(0, warpCooldown - now);
-            const minutes = Math.floor(remainingTime / 60);
-            const seconds = remainingTime % 60;
-            if (minutes > 0) {
+        if (warpCooldown > 0) {
+            const timeDiff = warpCooldown - now;
+            if (timeDiff > 0) {
+                const minutes = Math.floor(timeDiff / 60);
+                const seconds = timeDiff % 60;
                 console.log('Warp cooldown remaining:', minutes, 'minutes,', seconds, 'seconds');
             } else {
-                console.log('Warp cooldown remaining:', seconds, 'seconds');
+                const hoursAgo = Math.abs(Math.floor(timeDiff / 3600));
+                console.log('Warp cooldown expired', hoursAgo, 'hours ago');
             }
         }
-        if (isScanning && scanCooldown > now) {
-            const remainingTime = Math.max(0, scanCooldown - now);
-            const minutes = Math.floor(remainingTime / 60);
-            const seconds = remainingTime % 60;
-            if (minutes > 0) {
+        if (scanCooldown > 0) {
+            const timeDiff = scanCooldown - now;
+            if (timeDiff > 0) {
+                const minutes = Math.floor(timeDiff / 60);
+                const seconds = timeDiff % 60;
                 console.log('Scan cooldown remaining:', minutes, 'minutes,', seconds, 'seconds');
             } else {
-                console.log('Scan cooldown remaining:', seconds, 'seconds');
+                const hoursAgo = Math.abs(Math.floor(timeDiff / 3600));
+                console.log('Scan cooldown expired', hoursAgo, 'hours ago');
             }
         }
 
