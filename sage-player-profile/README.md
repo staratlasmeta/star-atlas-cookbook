@@ -18,10 +18,10 @@ https://bun.sh/
 ### Get a free RPC account with Helius
 https://www.helius.dev/
 
-### Edit index.ts, update your wallet id.json file and install your RPC key
+### Edit index.ts, update const wallet so that it points to a valid Solana id.json file or give it a public key string and install your RPC key
 - `nano index.ts`
 - update `'const wallet = "/home/user/.config/solana/id.json"`
 - update `const RPC_ENDPOINT = "https://mainnet.helius-rpc.com/?api-key="`
 - update `const RPC_WEBSOCKET = "wss://rpc.helius.xyz/?api-key="`
 ### Run the app
-`bun run index.ts`
+`bun index.ts`
